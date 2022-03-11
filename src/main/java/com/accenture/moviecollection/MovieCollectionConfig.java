@@ -1,0 +1,36 @@
+package com.accenture.moviecollection;
+
+import com.accenture.moviecollection.repository.MovieRepository;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.sqlite.jdbc4.JDBC4Connection;
+
+import java.sql.DriverManager;
+
+@Configuration
+public class MovieCollectionConfig {
+
+    @Bean
+    public MovieRepository getMovieRepository(){
+        return new MovieRepository();
+    }
+
+
+    @Bean
+    public JDBC4Connection getDatabaseConnection(){
+        try {
+
+            final String url = String.format("jdbc:sqlite:%s",
+                    "name");
+
+            Class.forName("org.sqlite.JDBC");
+
+
+            return (JDBC4Connection) DriverManager.getConnection(url);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+}

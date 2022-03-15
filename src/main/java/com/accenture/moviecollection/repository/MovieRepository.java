@@ -7,8 +7,7 @@ import org.sqlite.jdbc4.JDBC4Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class MovieRepository {
 
@@ -52,16 +51,17 @@ public class MovieRepository {
         return new Movie(0, name, description, rating);
     }
 
-    public List<Movie> getAllMovies() {
+    public static List<Movie> getAllMovies() {
 
-        List<Movie> result = new ArrayList<>();
+        List<Movie> result = new ArrayList();
 
         result.add(new Movie(1, "name1", "des", 1));
-        result.add(new Movie(2, "name1", "des", 1));
-        result.add(new Movie(3, "name1", "des", 1));
-        result.add(new Movie(4, "name1", "des", 1));
-        result.add(new Movie(5, "name1", "des", 1));
+        result.add(new Movie(2, "name1", "des", 5));
+        result.add(new Movie(3, "name1", "des", 10));
+        result.add(new Movie(4, "name1", "des", 3));
+        result.add(new Movie(5, "name1", "des", 2));
 
+        Collections.sort(result);
         return result;
     }
 }

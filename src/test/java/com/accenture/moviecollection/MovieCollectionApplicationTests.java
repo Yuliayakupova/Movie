@@ -32,7 +32,7 @@ class MovieCollectionApplicationTests {
 	}
 
 	@Test
-	public void getAllMovies_NO_NULL() throws SQLException {
+	void getAllMovies_NO_NULL() throws SQLException {
 
 		List<Movie> expected = movieRepository.getAllMovies(null);
 		Assertions.assertNotNull(expected);

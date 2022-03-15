@@ -18,14 +18,14 @@ public class MovieCollectionConfig {
 
     @Bean
     public JDBC4Connection getDatabaseConnection(){
-        try {
 
-            final String url = String.format("jdbc:sqlite:%s",
-                    "imdb.db");
+        final String url = String.format("jdbc:sqlite:%s",
+                "imdb.db");
 
-            Class.forName("org.sqlite.JDBC");
+        Class.forName("org.sqlite.JDBC");
 
-            final JDBC4Connection connection = (JDBC4Connection)  DriverManager.getConnection(url);
+        try(final JDBC4Connection connection = (JDBC4Connection)  DriverManager.getConnection(url)) {
+
             connection.setAutoCommit(true);
 
             return connection;

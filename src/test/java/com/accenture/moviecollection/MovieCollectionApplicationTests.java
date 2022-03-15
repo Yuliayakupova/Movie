@@ -5,8 +5,10 @@ import com.accenture.moviecollection.repository.MovieRepository;
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -14,32 +16,25 @@ import java.util.List;
 @SpringBootTest
 class MovieCollectionApplicationTests {
 
-
-//	@Test
-//	void getAllMovies() {
-//
-//		List<Movie> result = new ArrayList();
-//
-//		result.add(new Movie(1, "name1", "des", 1));
-//		result.add(new Movie(2, "name1", "des", 5));
-//		result.add(new Movie(3, "name1", "des", 10));
-//		result.add(new Movie(4, "name1", "des", 3));
-//		result.add(new Movie(5, "name1", "des", 2));
-//
-//
-//
-//		List<Movie> actual = MovieRepository.getAllMovies();
-//
-//		Collections.sort(result);
-//		Collections.sort(actual);
-//		Assert.assertEquals(result, actual);
-//
-//	}
+	@Autowired
+	MovieRepository movieRepository;
 
 	@Test
-	public void getAllMovies_NO_NULL() {
+	void getMovie() throws SQLException {
 
-		List<Movie> expected = MovieRepository.getAllMovies();
+		Movie result = movieRepository.getMovieById(1);
+		Movie actual = new Movie(1, "new name1", "new name1", 10);
+
+		Assert.assertEquals(result.getName(), actual.getName());
+		Assert.assertEquals(result.getDescription(), actual.getDescription());
+		Assert.assertEquals(result.getRating(), actual.getRating());
+
+	}
+
+	@Test
+	public void getAllMovies_NO_NULL() throws SQLException {
+
+		List<Movie> expected = movieRepository.getAllMovies(null);
 		Assertions.assertNotNull(expected);
 	}
 }

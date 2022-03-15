@@ -19,7 +19,6 @@ public class MovieAddingController {
 
     @PostMapping("/movie")
     public Movie createNewMovie(
-            @PathVariable Integer id,
             @RequestParam("name") String name,
             @RequestParam("description") String description,
             @RequestParam("rating") Integer rating

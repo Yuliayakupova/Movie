@@ -21,12 +21,14 @@ public class MovieCollectionConfig {
         try {
 
             final String url = String.format("jdbc:sqlite:%s",
-                    "name");
+                    "imdb.db");
 
             Class.forName("org.sqlite.JDBC");
 
+            final JDBC4Connection connection = (JDBC4Connection)  DriverManager.getConnection(url);
+            connection.setAutoCommit(true);
 
-            return (JDBC4Connection) DriverManager.getConnection(url);
+            return connection;
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,6 +1,6 @@
 package com.accenture.moviecollection.dto;
 
-public class Movie implements Comparable<Movie>{
+public class Movie{
 
     //Unique movie id from database
     private int id;
@@ -37,8 +37,4 @@ public class Movie implements Comparable<Movie>{
         return rating;
     }
 
-    @Override
-    public int compareTo(Movie o) {
-        return this.getRating() - o.getRating();
-    }
 }

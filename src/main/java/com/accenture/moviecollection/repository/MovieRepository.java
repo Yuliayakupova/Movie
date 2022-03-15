@@ -80,7 +80,7 @@ public class MovieRepository {
     }
 
     public List<Movie> getAllMovies(String orderBy) throws SQLException {
-        final List<Movie> result = new ArrayList(Movie);
+        final List<Movie> result = new ArrayList();
 
         final StringBuilder query = new StringBuilder();
         query.append(SELECT_MOVIE_ALL);
